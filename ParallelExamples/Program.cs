@@ -9,7 +9,51 @@ namespace ParallelExamples
 
         static void Main(string[] args)
         {
-            TryDeadLock();
+            //TryDeadLock();
+            TryWaitAndPulse();
+        }
+
+        static void TryWaitAndPulse()
+        {
+            Random r = new Random();
+            Bagno b = new Bagno();
+            var programmatoreJr = new Thread( () => 
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    Thread.Sleep(r.Next(5000));
+                    b.NonHoStudiatoAbbastanzaProgrammazione();
+                }              
+            });
+            Thread[] programmatoriSenior = new Thread[Bagno.colors.Length];
+
+            int x = programmatoriSenior.Length;
+
+            for (int i = 0; i < programmatoriSenior.Length; i++)
+            {
+                string color = Bagno.colors[i];
+                programmatoriSenior[i] = new Thread(() =>
+                {                    
+                    for (int j = 0; j < 10; j++)
+                    {
+                        Thread.Sleep(r.Next(2000));
+                        b.Evacua(color);
+                    }
+                });
+                programmatoriSenior[i].Name = "Programmatore Senior " + Bagno.colors[i];
+            }
+            
+
+
+            programmatoreJr.Name = "Programmatore Jr.";
+            for (int i = 0; i < programmatoriSenior.Length; i++)
+            {
+                programmatoriSenior[i].Start();
+            }
+
+            programmatoreJr.Start();
+            
+
         }
 
         static void TryDeadLock()
@@ -17,8 +61,8 @@ namespace ParallelExamples
             DeadLock dead = new DeadLock();
             var t1 = new Thread(() => dead.F1());
             var t2 = new Thread(() => dead.F2());
-            t1.Name = "ciccio";
-            t2.Name = "pippo";
+            t1.Name = "T1";
+            t2.Name = "T2";
             t1.Start();
             t2.Start();
         }
