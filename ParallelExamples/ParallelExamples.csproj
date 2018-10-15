@@ -5,4 +5,68 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ConcurrentCollection\01ConcurrentDictionary.cs" />
+    <Compile Remove="ConcurrentCollection\02ConcurrentQueue.cs" />
+    <Compile Remove="ConcurrentCollection\03ConcurrentStack.cs" />
+    <Compile Remove="ConcurrentCollection\04ConcurrentBag.cs" />
+    <Compile Remove="ConcurrentCollection\05BlockingCollection.cs" />
+    <Compile Remove="DataSharing\01CriticalSections.cs" />
+    <Compile Remove="DataSharing\02InterlockedOperations.cs" />
+    <Compile Remove="DataSharing\03SpinLocking.cs" />
+    <Compile Remove="DataSharing\04Mutex.cs" />
+    <Compile Remove="DataSharing\05ReaderWriterLocks.cs" />
+    <Compile Remove="ParallelLinq\01AsParallel.cs" />
+    <Compile Remove="ParallelLinq\02CancellationAndExceptions.cs" />
+    <Compile Remove="ParallelLinq\03MergeOptions.cs" />
+    <Compile Remove="ParallelLinq\04CustomAggregation.cs" />
+    <Compile Remove="ParallelLoops\01ParallelLoops.cs" />
+    <Compile Remove="ParallelLoops\02BreakingAndStopping.cs" />
+    <Compile Remove="ParallelLoops\03ThreadLocalStorage.cs" />
+    <Compile Remove="ParallelLoops\04Partitioning.cs" />
+    <Compile Remove="TaskCoordination\01CreatingContinuations.cs" />
+    <Compile Remove="TaskCoordination\02ChildTasks.cs" />
+    <Compile Remove="TaskCoordination\03Barrier.cs" />
+    <Compile Remove="TaskCoordination\04CountDownEvent.cs" />
+    <Compile Remove="TaskCoordination\05ResetEvents.cs" />
+    <Compile Remove="TaskCoordination\06SemaphoreDemo.cs" />
+    <Compile Remove="Tasks\01CreatingAndStartingTasks.cs" />
+    <Compile Remove="Tasks\02CancellingTasks.cs" />
+    <Compile Remove="Tasks\03WaitingForTimeToPass.cs" />
+    <Compile Remove="Tasks\04WaitingForTasks.cs" />
+    <Compile Remove="Tasks\05ExceptionHandling.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ConcurrentCollection\01ConcurrentDictionary.cs" />
+    <None Include="ConcurrentCollection\02ConcurrentQueue.cs" />
+    <None Include="ConcurrentCollection\03ConcurrentStack.cs" />
+    <None Include="ConcurrentCollection\04ConcurrentBag.cs" />
+    <None Include="ConcurrentCollection\05BlockingCollection.cs" />
+    <None Include="DataSharing\01CriticalSections.cs" />
+    <None Include="DataSharing\02InterlockedOperations.cs" />
+    <None Include="DataSharing\03SpinLocking.cs" />
+    <None Include="DataSharing\04Mutex.cs" />
+    <None Include="DataSharing\05ReaderWriterLocks.cs" />
+    <None Include="ParallelLinq\01AsParallel.cs" />
+    <None Include="ParallelLinq\02CancellationAndExceptions.cs" />
+    <None Include="ParallelLinq\03MergeOptions.cs" />
+    <None Include="ParallelLinq\04CustomAggregation.cs" />
+    <None Include="ParallelLoops\01ParallelLoops.cs" />
+    <None Include="ParallelLoops\02BreakingAndStopping.cs" />
+    <None Include="ParallelLoops\03ThreadLocalStorage.cs" />
+    <None Include="ParallelLoops\04Partitioning.cs" />
+    <None Include="TaskCoordination\01CreatingContinuations.cs" />
+    <None Include="TaskCoordination\02ChildTasks.cs" />
+    <None Include="TaskCoordination\03Barrier.cs" />
+    <None Include="TaskCoordination\04CountDownEvent.cs" />
+    <None Include="TaskCoordination\05ResetEvents.cs" />
+    <None Include="TaskCoordination\06SemaphoreDemo.cs" />
+    <None Include="Tasks\01CreatingAndStartingTasks.cs" />
+    <None Include="Tasks\02CancellingTasks.cs" />
+    <None Include="Tasks\03WaitingForTimeToPass.cs" />
+    <None Include="Tasks\04WaitingForTasks.cs" />
+    <None Include="Tasks\05ExceptionHandling.cs" />
+  </ItemGroup>
+
 </Project>
