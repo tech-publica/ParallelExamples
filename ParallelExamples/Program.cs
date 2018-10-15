@@ -6,17 +6,39 @@ namespace ParallelExamples
 {
     class Program
     {
+
         static void Main(string[] args)
+        {
+            TryDeadLock();
+        }
+
+        static void TryDeadLock()
+        {
+            DeadLock dead = new DeadLock();
+            var t1 = new Thread(() => dead.F1());
+            var t2 = new Thread(() => dead.F2());
+            t1.Name = "ciccio";
+            t2.Name = "pippo";
+            t1.Start();
+            t2.Start();
+        }
+
+
+
+        static void TryLocking()
         {
             Account target = new Account(1000);
 
             Thread[] adders = new Thread[3];
             Thread[] removers = new Thread[3];
+
+       
+
             for (int i = 0; i < adders.Length; i++)
             {
                 adders[i] = new Thread(() =>
                 {
-                    for (int n = 0; n < 100; n++)
+                    for (int n = 0; n < 10000; n++)
                     {
                         target.Credit(100);
                     }
@@ -26,7 +48,7 @@ namespace ParallelExamples
             {
                 removers[i] = new Thread(() =>
                 {
-                    for (int n = 0; n < 100; n++)
+                    for (int n = 0; n < 10000; n++)
                     {
                         target.Debit(100);
                     }

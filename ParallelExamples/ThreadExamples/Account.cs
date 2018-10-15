@@ -6,7 +6,7 @@ namespace ParallelExamples.ThreadExamples
 {
     public class Account
     {
-        //private readonly object balanceLock = new object();
+        private readonly object balanceLock = new object();
         private decimal balance;
         public decimal Balance { get => balance; }
 
@@ -17,32 +17,27 @@ namespace ParallelExamples.ThreadExamples
 
         public decimal Debit(decimal amount)
         {
-           // lock (balanceLock)
-            //{
-                if (balance >= amount)
-                {
+            lock (balanceLock)
+            {
+
                     Console.WriteLine($"Balance before debit :{balance,5}");
                     Console.WriteLine($"Amount to remove     :{amount,5}");
                     balance = balance - amount;
                     Console.WriteLine($"Balance after debit  :{balance,5}");
                     return amount;
-                }
-                else
-                {
-                    return 0;
-                }
-           // }
+
+            }
         }
 
         public void Credit(decimal amount)
         {
-          //  lock (balanceLock)
-           // {
+            lock (balanceLock)
+            {
                 Console.WriteLine($"Balance before credit:{balance,5}");
                 Console.WriteLine($"Amount to add        :{amount,5}");
                 balance = balance + amount;
                 Console.WriteLine($"Balance after credit :{balance,5}");
-           // }
+            }
         }
     }
 }
