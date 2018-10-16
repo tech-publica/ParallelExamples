@@ -9,6 +9,13 @@ namespace ParallelExamples
 
         static void Main(string[] args)
         {
+            ParameterizedThreadStart ps = (obj) => Console.WriteLine(obj);
+
+            Thread t = new Thread((obj) => Console.WriteLine(obj));
+            t.Start("ciao");
+           
+            t.Join();
+
             //TryDeadLock();
             TryWaitAndPulse();
         }
@@ -27,11 +34,12 @@ namespace ParallelExamples
             });
             Thread[] programmatoriSenior = new Thread[Bagno.colors.Length];
 
-            int x = programmatoriSenior.Length;
+          
 
             for (int i = 0; i < programmatoriSenior.Length; i++)
             {
                 string color = Bagno.colors[i];
+                int k = i;
                 programmatoriSenior[i] = new Thread(() =>
                 {                    
                     for (int j = 0; j < 10; j++)

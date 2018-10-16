@@ -11,8 +11,6 @@ namespace ParallelExamples.ThreadExamples
         public static string[] colors = {"Rosso", "Bianco", "Giallo" };
         private Random dado = new Random();
 
-        
-
         public void Evacua(string color)
         {
             Console.WriteLine($" { Thread.CurrentThread.Name} sto cercando di ottenere il lock per entrare nel bagno");
