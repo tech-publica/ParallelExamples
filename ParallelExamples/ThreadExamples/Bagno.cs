@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading;
 
 namespace ParallelExamples.ThreadExamples
@@ -10,6 +10,16 @@ namespace ParallelExamples.ThreadExamples
         private List<String> rotoli = new List<string>();
         public static string[] colors = {"Rosso", "Bianco", "Giallo" };
         private Random dado = new Random();
+        public Dictionary<String, int> RotoliConsumati { get; } 
+            = new Dictionary<string, int>();
+        public bool AllNeededHaveBeenConsumed
+        {
+            get
+            {
+                return RotoliConsumati.Values.Sum() >= 6;
+            }
+                
+        }
 
         public void Evacua(string color)
         {
@@ -23,10 +33,24 @@ namespace ParallelExamples.ThreadExamples
                     {
                         Console.WriteLine($" { Thread.CurrentThread.Name} Cacchio {color} non è il colore giusto!");
                     }
-                    Monitor.Wait(this);                   
-                                        
+                    else
+                    {
+                        Console.WriteLine($" { Thread.CurrentThread.Name} Mai che ci siano rotoli in sto bagno, fannullone di un programmatore Jr!");
+                    }
+                    Console.WriteLine($" { Thread.CurrentThread.Name} Mi tocca abbioccarmi in bagno");
+                    Monitor.Wait(this);
+                    Console.WriteLine($" { Thread.CurrentThread.Name} Risvegliato! Vai che forse si evacua!");
+
                 }
-                Console.WriteLine($" { Thread.CurrentThread.Name} Ho evacuato con il rotolo {color}");
+                if(RotoliConsumati.ContainsKey(color))
+                {
+                    RotoliConsumati[color]++;
+                }
+                else
+                {
+                    RotoliConsumati[color] = 1;
+                }
+                Console.WriteLine($" { Thread.CurrentThread.Name} Aaaah, ho evacuato con il rotolo {color}");
 
             }
         }

@@ -26,9 +26,15 @@ namespace ParallelExamples
             Bagno b = new Bagno();
             var programmatoreJr = new Thread( () => 
             {
-                for (int i = 0; i < 100; i++)
+                while (true)
                 {
                     Thread.Sleep(r.Next(5000));
+                    if (b.AllNeededHaveBeenConsumed)
+                    {
+                        Console.WriteLine($"{Thread.CurrentThread.Name} says: Che giornata di M.. ma almeno e' finita!");
+                        break;
+                    }
+                        
                     b.NonHoStudiatoAbbastanzaProgrammazione();
                 }              
             });
@@ -42,7 +48,7 @@ namespace ParallelExamples
                 int k = i;
                 programmatoriSenior[i] = new Thread(() =>
                 {                    
-                    for (int j = 0; j < 10; j++)
+                    for (int j = 0; j < 2; j++)
                     {
                         Thread.Sleep(r.Next(2000));
                         b.Evacua(color);
